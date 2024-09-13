@@ -8,6 +8,12 @@
 
 WPF UI Markdown is based on WPF UI, and provides the simple markdown viewer.
 
+Pure C# Markdown Viewer without any Webview Engine.
+
+Some Markdown feature are not supported in WPF.
+
+See the [example](src/Wpf.Ui.Markdown/) for how to use.
+
 ## Usage
 
 ```xaml
@@ -31,6 +37,6 @@ WPF UI Markdown is based on WPF UI, and provides the simple markdown viewer.
 <md:MarkdownViewer Markdown="{Binding Markdown}" />
 ```
 
-## Screenshot
+## Screen-shot
 
 ![image-20240913172834279](assets/image-20240913172834279.png)
