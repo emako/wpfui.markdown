@@ -17,8 +17,8 @@
 	  <Authors>ema</Authors>
 	  <Company>ema</Company>
 	  <Description>WPF UI Markdown is based on WPF UI, and provides the simple markdown viewer.</Description>
-	  <PackageProjectUrl>https://github.com/emako/wpfui.violeta</PackageProjectUrl>
-	  <RepositoryUrl>https://github.com/emako/wpfui.violeta</RepositoryUrl>
+	  <PackageProjectUrl>https://github.com/emako/wpfui.markdown</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/emako/wpfui.markdown</RepositoryUrl>
 	  <RepositoryType>git</RepositoryType>
 	  <PackageTags>WPF-UI .NET WPF Markdown</PackageTags>
 	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -53,5 +53,5 @@
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
 	</ItemGroup>
-	
+
 </Project>
