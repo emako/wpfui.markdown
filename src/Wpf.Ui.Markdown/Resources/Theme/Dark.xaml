@@ -1,0 +1,12 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:md="clr-namespace:Wpf.Ui.Markdown"
+    xmlns:ui="http://schemas.lepo.co/wpfui/2022/xaml">
+
+    <SolidColorBrush x:Key="MarkdownQuoteBlockBorderBrush" Color="#616161" />
+    <SolidColorBrush x:Key="MarkdownQuoteBlockForeground" Color="#AAAAAA" />
+    <SolidColorBrush x:Key="MarkdownThematicBreakStroke" Color="#1F1F1F" />
+    <SolidColorBrush x:Key="MarkdownMarkedBackground" Color="#FFFF00" />
+
+</ResourceDictionary>

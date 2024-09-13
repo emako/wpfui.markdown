@@ -1,0 +1,28 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:system="clr-namespace:System;assembly=System.Runtime">
+
+    <FontFamily x:Key="MonoThemeFontFamily">pack://application:,,,/Wpf.Ui.Markdown;component/Assets/Fonts/Ubuntu Mono derivative Powerline.ttf#Ubuntu Mono derivative Powerline, Microsoft Yahei UI</FontFamily>
+
+    <system:Double x:Key="MarkdownHeading1FontSize">32</system:Double>
+    <system:Double x:Key="MarkdownHeading2FontSize">20</system:Double>
+    <system:Double x:Key="MarkdownHeading3FontSize">18</system:Double>
+    <system:Double x:Key="MarkdownHeading4FontSize">18</system:Double>
+    <system:Double x:Key="MarkdownHeading5FontSize">16</system:Double>
+    <system:Double x:Key="MarkdownHeading6FontSize">13</system:Double>
+    <system:Double x:Key="MarkdownLinkFontSize">13</system:Double>
+
+    <SolidColorBrush x:Key="MarkdownParagraphBrush" Color="{DynamicResource TextFillColorPrimary}" />
+    <SolidColorBrush x:Key="MarkdownRunBrush" Color="{DynamicResource TextFillColorPrimary}" />
+
+    <SolidColorBrush x:Key="MarkdownHeading1Brush" Color="{DynamicResource SystemAccentColorPrimary}" />
+    <SolidColorBrush x:Key="MarkdownHeading2Brush" Color="{DynamicResource SystemAccentColorSecondary}" />
+    <SolidColorBrush x:Key="MarkdownHeading3Brush" Color="{DynamicResource SystemAccentColorTertiary}" />
+    <SolidColorBrush x:Key="MarkdownHeading4Brush" Color="{DynamicResource SystemAccentColorTertiary}" />
+    <SolidColorBrush x:Key="MarkdownHeading5Brush" Color="{DynamicResource SystemAccentColorTertiary}" />
+    <SolidColorBrush x:Key="MarkdownHeading6Brush" Color="{DynamicResource SystemAccentColorTertiary}" />
+
+    <SolidColorBrush x:Key="MarkdownLinkBrush" Color="{DynamicResource MarkdownParagraphBrush}" />
+
+</ResourceDictionary>

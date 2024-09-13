@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+	  <PackageId>WPF-UI.Markdown</PackageId>
+	  <Product>WPF-UI.Markdown</Product>
+	  <TargetFrameworks>net462;net47;net471;net472;net48;net481;net6.0-windows;net7.0-windows;net8.0-windows;</TargetFrameworks>
+	  <UseWPF>true</UseWPF>
+	  <UseWinUI>false</UseWinUI>
+	  <UseWindowsForms>false</UseWindowsForms>
+	  <LangVersion>12.0</LangVersion>
+	  <Nullable>enable</Nullable>
+	  <EnableWindowsTargeting>true</EnableWindowsTargeting>
+	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+	  <AssemblyVersion>3.0.5.0</AssemblyVersion>
+	  <FileVersion>3.0.5.0</FileVersion>
+	  <Version>$(VersionPrefix)3.0.5.0</Version>
+	  <Authors>ema</Authors>
+	  <Company>ema</Company>
+	  <Description>WPF UI Markdown is based on WPF UI, and provides the simple markdown viewer.</Description>
+	  <PackageProjectUrl>https://github.com/emako/wpfui.violeta</PackageProjectUrl>
+	  <RepositoryUrl>https://github.com/emako/wpfui.violeta</RepositoryUrl>
+	  <RepositoryType>git</RepositoryType>
+	  <PackageTags>WPF-UI .NET WPF Markdown</PackageTags>
+	  <PackageLicenseExpression>MIT</PackageLicenseExpression>
+	  <PackageReadmeFile>README.md</PackageReadmeFile>
+	  <PackageIcon>wpfui.png</PackageIcon>
+	  <NoWarn>1701;1702;8602;8604;8764;8600;0649;</NoWarn>
+  </PropertyGroup>
+
+	<ItemGroup>
+		<Resource Include="Resources\Fonts\*.ttf" />
+		<Resource Include="Resources\Images\*.png" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="Resources\Fonts\Ubuntu Mono derivative Powerline.ttf" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<None Include="..\..\README.md" Pack="true" PackagePath="" />
+		<None Include="..\..\branding\wpfui.png" Pack="true" PackagePath="" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="WPF-UI" Version="3.0.5" />
+		<PackageReference Include="Markdig" Version="0.37.0" />
+		<PackageReference Include="ColorCode.Core" Version="2.0.15" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.SourceLink.GitHub" Version="8.0.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+	</ItemGroup>
+	
+</Project>
