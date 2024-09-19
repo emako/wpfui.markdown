@@ -18,6 +18,7 @@
     <Style BasedOn="{StaticResource DefaultMarkdownViewerStyle}" TargetType="{x:Type control:MarkdownViewer}" />
 
     <Style x:Key="{x:Static md:Styles.DocumentStyleKey}" TargetType="{x:Type FlowDocument}">
+        <Setter Property="Foreground" Value="{DynamicResource CardForeground}" />
         <Setter Property="FontFamily" Value="{DynamicResource MonoThemeFontFamily}" />
     </Style>
 
