@@ -37,6 +37,7 @@ See the [example](src/Wpf.Ui.Markdown/) for how to use.
 <md:MarkdownViewer Markdown="{Binding Markdown}" />
 ```
 
-## Screen-shot
+## Screenshot
 
-![image-20240913172834279](assets/image-20240913172834279.png)
+![image-20240913172834279](https://raw.githubusercontent.com/emako/wpfui.markdown/refs/heads/master/assets/image-20240913172834279.png)
+
