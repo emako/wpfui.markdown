@@ -62,3 +62,8 @@ Marked
 
 ![image-20240913172834279](https://raw.githubusercontent.com/emako/wpfui.markdown/refs/heads/master/assets/image-20240913172834279.png)
 
+## Thanks to
+
+- [markdig.wpf](https://github.com/Kryptos-FR/markdig.wpf)
+
+- [Markdig.Wpf.ColorCode](https://github.com/coltrane2ny/Markdig.Wpf.ColorCode)
