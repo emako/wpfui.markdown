@@ -23,6 +23,4 @@
     <SolidColorBrush x:Key="MarkdownHeading5Brush" Color="{DynamicResource SystemAccentColorTertiary}" />
     <SolidColorBrush x:Key="MarkdownHeading6Brush" Color="{DynamicResource SystemAccentColorTertiary}" />
 
-    <SolidColorBrush x:Key="MarkdownLinkBrush" Color="{DynamicResource MarkdownParagraphBrush}" />
-
 </ResourceDictionary>

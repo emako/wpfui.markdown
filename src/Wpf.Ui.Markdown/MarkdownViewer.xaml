@@ -78,7 +78,7 @@
 
     <Style x:Key="{x:Static md:Styles.HyperlinkStyleKey}" TargetType="{x:Type Hyperlink}">
         <Setter Property="FontSize" Value="{DynamicResource MarkdownLinkFontSize}" />
-        <Setter Property="Foreground" Value="{DynamicResource MarkdownLinkBrush}" />
+        <Setter Property="Foreground" Value="{DynamicResource HyperlinkButtonForeground}" />
         <Setter Property="FontFamily" Value="{DynamicResource MonoThemeFontFamily}" />
     </Style>
 
