@@ -47,4 +47,4 @@ E = mc<sup>2</sup> | E = mc^2^
 
 <mark>This text is highlighted</mark>
 
-[wpfui.markdown](https://github.com/emako/wpfui.markdown)
+[hyperlink](https://github.com/emako/wpfui.markdown)

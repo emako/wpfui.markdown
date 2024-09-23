@@ -37,6 +37,27 @@ See the [example](src/Wpf.Ui.Markdown/) for how to use.
 <md:MarkdownViewer Markdown="{Binding Markdown}" />
 ```
 
+## Syntax
+
+> Support following markdown syntax.
+
+```
+CodeBlock
+Code
+Heading
+Hyperlink
+Image
+QuoteBlock
+Table
+TaskList
+ThematicBreak
+Subscript
+Superscript
+StrikeThrough
+Inserted
+Marked
+```
+
 ## Screenshot
 
 ![image-20240913172834279](https://raw.githubusercontent.com/emako/wpfui.markdown/refs/heads/master/assets/image-20240913172834279.png)
