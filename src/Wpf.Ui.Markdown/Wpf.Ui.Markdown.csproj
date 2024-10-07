@@ -33,7 +33,8 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <None Remove="Resources\Fonts\Ubuntu Mono derivative Powerline.ttf" />
+		<None Remove="Resources\Fonts\*.ttf" />
+		<None Remove="Resources\Images\*.png" />
 	</ItemGroup>
 
 	<ItemGroup>
