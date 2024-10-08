@@ -3,7 +3,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:system="clr-namespace:System;assembly=System.Runtime">
 
-    <FontFamily x:Key="MonoThemeFontFamily">pack://application:,,,/Wpf.Ui.Markdown;component/Assets/Fonts/Ubuntu Mono derivative Powerline.ttf#Ubuntu Mono derivative Powerline, Microsoft Yahei UI</FontFamily>
+    <FontFamily x:Key="MonoThemeFontFamily">pack://application:,,,/Wpf.Ui.Markdown;component/Resources/Fonts/Ubuntu Mono derivative Powerline.ttf#Ubuntu Mono derivative Powerline, Microsoft Yahei UI</FontFamily>
 
     <system:Double x:Key="MarkdownHeading1FontSize">32</system:Double>
     <system:Double x:Key="MarkdownHeading2FontSize">20</system:Double>
