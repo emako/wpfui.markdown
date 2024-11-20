@@ -48,9 +48,11 @@ public static class RoundedBlockExtension
             Padding = new Thickness(3d, 1d, 3d, 1d),
             HorizontalAlignment = HorizontalAlignment.Stretch,
             VerticalAlignment = VerticalAlignment.Stretch,
-            Margin = new Thickness(0d, 3d, 0d, -6d),
+            Margin = new Thickness(0d, 0d, 0d, -4d),
+            Height = 20d,
             Child = new TextBlock(inline)
             {
+                Margin = new Thickness(0d, 0d, 0d, -10d),
                 HorizontalAlignment = HorizontalAlignment.Center,
                 VerticalAlignment = VerticalAlignment.Center,
             }

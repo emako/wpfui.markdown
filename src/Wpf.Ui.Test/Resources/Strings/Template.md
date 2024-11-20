@@ -36,6 +36,8 @@ public sealed class Markdown();
 
 1. List 1
 2. List 2
+3. List 3 with `inline code` here
+4. List 4
 
 H<sub>2</sub>O | H~2~O
 
