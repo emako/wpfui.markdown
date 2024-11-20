@@ -3,7 +3,7 @@
   <PropertyGroup>
 	  <PackageId>WPF-UI.Markdown</PackageId>
 	  <Product>WPF-UI.Markdown</Product>
-	  <TargetFrameworks>net462;net47;net471;net472;net48;net481;net6.0-windows;net7.0-windows;net8.0-windows;</TargetFrameworks>
+	  <TargetFrameworks>net462;net47;net471;net472;net48;net481;net6.0-windows;net7.0-windows;net8.0-windows;net9.0-windows;</TargetFrameworks>
 	  <UseWPF>true</UseWPF>
 	  <UseWinUI>false</UseWinUI>
 	  <UseWindowsForms>false</UseWindowsForms>
@@ -11,9 +11,9 @@
 	  <Nullable>enable</Nullable>
 	  <EnableWindowsTargeting>true</EnableWindowsTargeting>
 	  <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-	  <AssemblyVersion>3.0.5.3</AssemblyVersion>
-	  <FileVersion>3.0.5.3</FileVersion>
-	  <Version>$(VersionPrefix)3.0.5.3</Version>
+	  <AssemblyVersion>3.0.5.4</AssemblyVersion>
+	  <FileVersion>3.0.5.4</FileVersion>
+	  <Version>$(VersionPrefix)3.0.5.4</Version>
 	  <Authors>ema</Authors>
 	  <Company>ema</Company>
 	  <Description>WPF UI Markdown is based on WPF UI, and provides the simple markdown viewer.</Description>
