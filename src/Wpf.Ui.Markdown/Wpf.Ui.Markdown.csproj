@@ -11,9 +11,9 @@
 		<Nullable>enable</Nullable>
 		<EnableWindowsTargeting>true</EnableWindowsTargeting>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-		<AssemblyVersion>3.0.5.4</AssemblyVersion>
-		<FileVersion>3.0.5.4</FileVersion>
-		<Version>$(VersionPrefix)3.0.5.4</Version>
+		<AssemblyVersion>3.0.5.5</AssemblyVersion>
+		<FileVersion>3.0.5.5</FileVersion>
+		<Version>$(VersionPrefix)3.0.5.5</Version>
 		<Authors>ema</Authors>
 		<Company>ema</Company>
 		<Description>WPF UI Markdown is based on WPF UI, and provides the simple markdown viewer.</Description>
