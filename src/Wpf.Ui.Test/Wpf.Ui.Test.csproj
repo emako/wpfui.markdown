@@ -27,7 +27,7 @@
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
 		<PackageReference Include="WPF-UI" Version="3.0.5" />
-		<PackageReference Include="WPF-UI.Violeta" Version="3.0.5.14" />
+		<PackageReference Include="WPF-UI.Violeta" Version="3.0.5.26" />
 	</ItemGroup>
 
 	<ItemGroup>
