@@ -18,7 +18,7 @@ public class ThemesDictionary : ResourceDictionary
 
     static ThemesDictionary()
     {
-        ThemeManager.RegistApplicationThemeChanged();
+        ThemeManager.RegisterApplicationThemeChanged();
     }
 
     public ThemesDictionary()

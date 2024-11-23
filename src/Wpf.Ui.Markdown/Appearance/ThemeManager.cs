@@ -10,7 +10,7 @@ internal static class ThemeManager
 
     internal const string ThemesDictionaryPath = "pack://application:,,,/Wpf.Ui.Markdown;component/Resources/Theme/";
 
-    public static void RegistApplicationThemeChanged()
+    public static void RegisterApplicationThemeChanged()
     {
         ApplicationThemeManager.Changed -= ApplicationThemeManager_Changed;
         ApplicationThemeManager.Changed += ApplicationThemeManager_Changed;
