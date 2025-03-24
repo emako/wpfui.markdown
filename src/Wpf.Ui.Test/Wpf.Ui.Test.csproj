@@ -6,9 +6,9 @@
 		<Nullable>enable</Nullable>
 		<UseWPF>true</UseWPF>
 		<LangVersion>latest</LangVersion>
-		<AssemblyVersion>3.0.5.5</AssemblyVersion>
-		<FileVersion>3.0.5.5</FileVersion>
-		<Version>$(VersionPrefix)3.0.5.5</Version>
+		<AssemblyVersion>4.0.2.0</AssemblyVersion>
+		<FileVersion>4.0.2.0</FileVersion>
+		<Version>$(VersionPrefix)4.0.2.0</Version>
 		<ApplicationIcon>Resources\Images\ProfilePicture.ico</ApplicationIcon>
 	</PropertyGroup>
 
@@ -25,9 +25,9 @@
 	</ItemGroup>
 
 	<ItemGroup>
-		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
-		<PackageReference Include="WPF-UI" Version="3.0.5" />
-		<PackageReference Include="WPF-UI.Violeta" Version="3.0.5.26" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+		<PackageReference Include="WPF-UI" Version="4.0.2" />
+		<PackageReference Include="WPF-UI.Violeta" Version="4.0.0" />
 	</ItemGroup>
 
 	<ItemGroup>
