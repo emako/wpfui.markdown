@@ -37,6 +37,16 @@ See the [example](src/Wpf.Ui.Markdown/) for how to use.
 <md:MarkdownViewer Markdown="{Binding Markdown}" />
 ```
 
+If you expect better Code Block highlighting, you can use the following code:
+
+```c#
+ApplicationAccentColorManager.Apply(
+    Color.FromArgb(0xFF, 0xEE, 0x00, 0xBB),
+    ApplicationTheme.Dark,
+    false
+);
+```
+
 ## Syntax
 
 > Support following markdown syntax.
