@@ -14,6 +14,13 @@ namespace Wpf.Ui.Markdown.Renderers.Wpf.Inlines;
 /// <seealso cref="Markdig.Renderers.Wpf.WpfObjectRenderer{Markdig.Syntax.Inlines.LinkInline}" />
 public class LinkInlineRenderer : WpfObjectRenderer<LinkInline>
 {
+    private readonly WpfRenderer? _wpfRenderer;
+
+    public LinkInlineRenderer(WpfRenderer? wpfRenderer = null)
+    {
+        _wpfRenderer = wpfRenderer;
+    }
+
     /// <inheritdoc/>
     protected override void Write(WpfRenderer renderer, LinkInline link)
     {
@@ -48,15 +55,33 @@ public class LinkInlineRenderer : WpfObjectRenderer<LinkInline>
         {
             var hyperlink = new Hyperlink
             {
-                Command = Commands.Hyperlink,
-                CommandParameter = url,
                 NavigateUri = new Uri(url, UriKind.RelativeOrAbsolute),
                 ToolTip = !string.IsNullOrEmpty(link.Title) ? link.Title : null,
             };
 
-            hyperlink.CommandBindings.Add(new CommandBinding(Commands.Hyperlink, Commands.OpenUrlCommandExecutedHandler));
+            // Apply custom brush if provided
+            if (_wpfRenderer?.HyperlinkBrush != null)
+            {
+                hyperlink.Foreground = _wpfRenderer.HyperlinkBrush;
+            }
+            else
+            {
+                hyperlink.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.HyperlinkStyleKey);
+            }
 
-            hyperlink.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.HyperlinkStyleKey);
+            // Only make hyperlink interactive if HyperlinkInteractive is true
+            if (_wpfRenderer?.HyperlinkInteractive ?? true)
+            {
+                hyperlink.Command = Commands.Hyperlink;
+                hyperlink.CommandParameter = url;
+                hyperlink.CommandBindings.Add(new CommandBinding(Commands.Hyperlink, Commands.OpenUrlCommandExecutedHandler));
+            }
+
+            // If we didn't set a custom brush, set the style reference
+            if (_wpfRenderer?.HyperlinkBrush == null)
+            {
+                hyperlink.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.HyperlinkStyleKey);
+            }
 
             renderer.Push(hyperlink);
             renderer.WriteChildren(link);

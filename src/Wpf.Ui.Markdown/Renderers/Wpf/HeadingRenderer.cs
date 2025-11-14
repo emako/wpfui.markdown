@@ -7,6 +7,13 @@ namespace Wpf.Ui.Markdown.Renderers.Wpf;
 
 public class HeadingRenderer : WpfObjectRenderer<HeadingBlock>
 {
+    private readonly WpfRenderer? _wpfRenderer;
+
+    public HeadingRenderer(WpfRenderer? wpfRenderer = null)
+    {
+        _wpfRenderer = wpfRenderer;
+    }
+
     protected override void Write(WpfRenderer renderer, HeadingBlock obj)
     {
         if (renderer == null) throw new ArgumentNullException(nameof(renderer));
@@ -25,7 +32,17 @@ public class HeadingRenderer : WpfObjectRenderer<HeadingBlock>
             case 6: styleKey = Styles.Heading6StyleKey; break;
         }
 
-        if (styleKey != null)
+        // Apply custom brush if provided, otherwise use style
+        if (_wpfRenderer?.HeaderBrush != null)
+        {
+            paragraph.Foreground = _wpfRenderer.HeaderBrush;
+            // Still set the style for other properties like font size and weight
+            if (styleKey != null)
+            {
+                paragraph.SetResourceReference(FrameworkContentElement.StyleProperty, styleKey);
+            }
+        }
+        else if (styleKey != null)
         {
             paragraph.SetResourceReference(FrameworkContentElement.StyleProperty, styleKey);
         }

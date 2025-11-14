@@ -38,10 +38,37 @@ public class WpfRenderer : RendererBase
         LoadDocument(document);
     }
 
+    /// <summary>
+    /// Gets or sets the custom brush for general text.
+    /// </summary>
+    public Brush? TextBrush { get; set; }
+
+    /// <summary>
+    /// Gets or sets the custom brush for headers.
+    /// </summary>
+    public Brush? HeaderBrush { get; set; }
+
+    /// <summary>
+    /// Gets or sets the custom brush for hyperlinks.
+    /// </summary>
+    public Brush? HyperlinkBrush { get; set; }
+
+    /// <summary>
+    /// Gets or sets whether hyperlinks are interactive.
+    /// </summary>
+    public bool HyperlinkInteractive { get; set; } = true;
+
     public virtual void LoadDocument(FlowDocument document)
     {
         Document = document ?? throw new ArgumentNullException(nameof(document));
         document.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.DocumentStyleKey);
+        
+        // Apply custom text brush if provided
+        if (TextBrush != null)
+        {
+            document.Foreground = TextBrush;
+        }
+        
         stack.Push(document);
         LoadRenderers();
     }
@@ -166,7 +193,7 @@ public class WpfRenderer : RendererBase
             ? StyleDictionary.DefaultDark
             : StyleDictionary.DefaultLight));
         ObjectRenderers.Add(new ListRenderer());
-        ObjectRenderers.Add(new HeadingRenderer());
+        ObjectRenderers.Add(new HeadingRenderer(this));
         ObjectRenderers.Add(new ParagraphRenderer());
         ObjectRenderers.Add(new QuoteBlockRenderer());
         ObjectRenderers.Add(new ThematicBreakRenderer());
@@ -178,7 +205,7 @@ public class WpfRenderer : RendererBase
         ObjectRenderers.Add(new EmphasisInlineRenderer());
         ObjectRenderers.Add(new HtmlEntityInlineRenderer());
         ObjectRenderers.Add(new LineBreakInlineRenderer());
-        ObjectRenderers.Add(new LinkInlineRenderer());
+        ObjectRenderers.Add(new LinkInlineRenderer(this));
         ObjectRenderers.Add(new LiteralInlineRenderer());
 
         // Extension renderers

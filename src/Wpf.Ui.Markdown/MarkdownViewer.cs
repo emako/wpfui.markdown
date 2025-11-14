@@ -2,6 +2,7 @@ using Markdig;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
+using System.Windows.Media;
 
 namespace Wpf.Ui.Markdown.Controls;
 
@@ -27,10 +28,34 @@ public class MarkdownViewer : Control
         DependencyProperty.Register(nameof(Markdown), typeof(string), typeof(MarkdownViewer), new FrameworkPropertyMetadata(MarkdownChanged));
 
     /// <summary>
-    /// Defines the <see cref="Markdown"/> property.
+    /// Defines the <see cref="Pipeline"/> property.
     /// </summary>
     public static readonly DependencyProperty PipelineProperty =
         DependencyProperty.Register(nameof(Pipeline), typeof(MarkdownPipeline), typeof(MarkdownViewer), new FrameworkPropertyMetadata(PipelineChanged));
+
+    /// <summary>
+    /// Defines the <see cref="TextBrush"/> property.
+    /// </summary>
+    public static readonly DependencyProperty TextBrushProperty =
+        DependencyProperty.Register(nameof(TextBrush), typeof(Brush), typeof(MarkdownViewer), new FrameworkPropertyMetadata(null, MarkdownChanged));
+
+    /// <summary>
+    /// Defines the <see cref="HeaderBrush"/> property.
+    /// </summary>
+    public static readonly DependencyProperty HeaderBrushProperty =
+        DependencyProperty.Register(nameof(HeaderBrush), typeof(Brush), typeof(MarkdownViewer), new FrameworkPropertyMetadata(null, MarkdownChanged));
+
+    /// <summary>
+    /// Defines the <see cref="HyperlinkBrush"/> property.
+    /// </summary>
+    public static readonly DependencyProperty HyperlinkBrushProperty =
+        DependencyProperty.Register(nameof(HyperlinkBrush), typeof(Brush), typeof(MarkdownViewer), new FrameworkPropertyMetadata(null, MarkdownChanged));
+
+    /// <summary>
+    /// Defines the <see cref="HyperlinkInteractive"/> property.
+    /// </summary>
+    public static readonly DependencyProperty HyperlinkInteractiveProperty =
+        DependencyProperty.Register(nameof(HyperlinkInteractive), typeof(bool), typeof(MarkdownViewer), new FrameworkPropertyMetadata(true, MarkdownChanged));
 
     static MarkdownViewer()
     {
@@ -64,6 +89,42 @@ public class MarkdownViewer : Control
         set => SetValue(PipelineProperty, value);
     }
 
+    /// <summary>
+    /// Gets or sets the brush for general text.
+    /// </summary>
+    public Brush? TextBrush
+    {
+        get => (Brush?)GetValue(TextBrushProperty);
+        set => SetValue(TextBrushProperty, value);
+    }
+
+    /// <summary>
+    /// Gets or sets the brush for header text.
+    /// </summary>
+    public Brush? HeaderBrush
+    {
+        get => (Brush?)GetValue(HeaderBrushProperty);
+        set => SetValue(HeaderBrushProperty, value);
+    }
+
+    /// <summary>
+    /// Gets or sets the brush for hyperlink text.
+    /// </summary>
+    public Brush? HyperlinkBrush
+    {
+        get => (Brush?)GetValue(HyperlinkBrushProperty);
+        set => SetValue(HyperlinkBrushProperty, value);
+    }
+
+    /// <summary>
+    /// Gets or sets whether hyperlinks are interactive (clickable).
+    /// </summary>
+    public bool HyperlinkInteractive
+    {
+        get => (bool)GetValue(HyperlinkInteractiveProperty);
+        set => SetValue(HyperlinkInteractiveProperty, value);
+    }
+
     private static void MarkdownChanged(object sender, DependencyPropertyChangedEventArgs e)
     {
         var control = (MarkdownViewer)sender;
@@ -78,6 +139,18 @@ public class MarkdownViewer : Control
 
     protected virtual void RefreshDocument()
     {
-        Document = Markdown != null ? Ui.Markdown.Markdown.ToFlowDocument(Markdown, Pipeline ?? DefaultPipeline) : null;
+        if (Markdown != null)
+        {
+            var renderer = new Renderers.WpfRenderer();
+            renderer.TextBrush = TextBrush;
+            renderer.HeaderBrush = HeaderBrush;
+            renderer.HyperlinkBrush = HyperlinkBrush;
+            renderer.HyperlinkInteractive = HyperlinkInteractive;
+            Document = Ui.Markdown.Markdown.ToFlowDocument(Markdown, Pipeline ?? DefaultPipeline, renderer);
+        }
+        else
+        {
+            Document = null;
+        }
     }
 }
