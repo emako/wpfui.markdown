@@ -37,7 +37,7 @@
                         Margin="0,8,0,0"
                         FontSize="14"
                         FontWeight="Black"
-                        Text="Markdown" />
+                        Text="Default Markdown" />
                     <ui:StackPanel
                         Margin="0,8,0,0"
                         Orientation="Horizontal"
@@ -47,6 +47,42 @@
                         </ui:Card>
                         <ui:Card VerticalAlignment="Top">
                             <md:MarkdownViewer Markdown="{Binding Markdown}" />
+                        </ui:Card>
+                    </ui:StackPanel>
+
+                    <TextBlock
+                        MinWidth="120"
+                        Margin="0,16,0,0"
+                        FontSize="14"
+                        FontWeight="Black"
+                        Text="Customized Colors (Red Headers, Green Links)" />
+                    <ui:StackPanel
+                        Margin="0,8,0,0"
+                        Orientation="Horizontal"
+                        Spacing="8">
+                        <ui:Card VerticalAlignment="Top">
+                            <md:MarkdownViewer
+                                HeaderBrush="Red"
+                                HyperlinkBrush="Green"
+                                Markdown="{Binding Markdown}" />
+                        </ui:Card>
+                    </ui:StackPanel>
+
+                    <TextBlock
+                        MinWidth="120"
+                        Margin="0,16,0,0"
+                        FontSize="14"
+                        FontWeight="Black"
+                        Text="Non-Interactive Links (Links not clickable)" />
+                    <ui:StackPanel
+                        Margin="0,8,0,0"
+                        Orientation="Horizontal"
+                        Spacing="8">
+                        <ui:Card VerticalAlignment="Top">
+                            <md:MarkdownViewer
+                                HyperlinkBrush="Orange"
+                                HyperlinkInteractive="False"
+                                Markdown="{Binding Markdown}" />
                         </ui:Card>
                     </ui:StackPanel>
                 </StackPanel>

@@ -59,10 +59,12 @@ public class LinkInlineRenderer : WpfObjectRenderer<LinkInline>
                 ToolTip = !string.IsNullOrEmpty(link.Title) ? link.Title : null,
             };
 
-            // Apply custom brush if provided
+            // Apply custom brush if provided, otherwise use style
             if (_wpfRenderer?.HyperlinkBrush != null)
             {
                 hyperlink.Foreground = _wpfRenderer.HyperlinkBrush;
+                // Still set the style for other properties like font size
+                hyperlink.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.HyperlinkStyleKey);
             }
             else
             {
@@ -75,12 +77,6 @@ public class LinkInlineRenderer : WpfObjectRenderer<LinkInline>
                 hyperlink.Command = Commands.Hyperlink;
                 hyperlink.CommandParameter = url;
                 hyperlink.CommandBindings.Add(new CommandBinding(Commands.Hyperlink, Commands.OpenUrlCommandExecutedHandler));
-            }
-
-            // If we didn't set a custom brush, set the style reference
-            if (_wpfRenderer?.HyperlinkBrush == null)
-            {
-                hyperlink.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.HyperlinkStyleKey);
             }
 
             renderer.Push(hyperlink);
