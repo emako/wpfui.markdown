@@ -37,6 +37,40 @@ See the [example](src/Wpf.Ui.Markdown/) for how to use.
 <md:MarkdownViewer Markdown="{Binding Markdown}" />
 ```
 
+### Customization
+
+You can customize the appearance and behavior of the MarkdownViewer using the following properties:
+
+```xaml
+<md:MarkdownViewer 
+    Markdown="{Binding Markdown}"
+    TextBrush="Black"
+    HeaderBrush="DarkBlue"
+    HyperlinkBrush="Blue"
+    HyperlinkInteractive="True" />
+```
+
+**Available Properties:**
+- `TextBrush` - Customizes the general text color (applies to the FlowDocument)
+- `HeaderBrush` - Customizes the header color for all heading levels (H1-H6)
+- `HyperlinkBrush` - Customizes the hyperlink color
+- `HyperlinkInteractive` - Enables/disables hyperlink interactivity (default: `true`)
+
+**Example: Non-Interactive Links**
+```xaml
+<md:MarkdownViewer 
+    Markdown="{Binding Markdown}"
+    HyperlinkInteractive="False" />
+```
+
+**Example: Custom Colors for Better Contrast**
+```xaml
+<md:MarkdownViewer 
+    Markdown="{Binding Markdown}"
+    HeaderBrush="#FF6B35"
+    HyperlinkBrush="#004E89" />
+```
+
 If you expect better Code Block highlighting, you can use the following code:
 
 ```c#
