@@ -38,17 +38,34 @@
                         FontSize="14"
                         FontWeight="Black"
                         Text="Markdown" />
-                    <ui:StackPanel
-                        Margin="0,8,0,0"
-                        Orientation="Horizontal"
-                        Spacing="8">
-                        <ui:Card VerticalAlignment="Top">
-                            <TextBlock Text="{Binding Markdown}" />
+                    <Grid Margin="0,8,0,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <ui:Card
+                            Grid.Column="0"
+                            Margin="0,0,4,0"
+                            VerticalAlignment="Top">
+                            <TextBox
+                                MinHeight="400"
+                                AcceptsReturn="True"
+                                AcceptsTab="True"
+                                Background="Transparent"
+                                BorderThickness="0"
+                                FontFamily="Consolas"
+                                HorizontalScrollBarVisibility="Auto"
+                                Text="{Binding Markdown, UpdateSourceTrigger=PropertyChanged}"
+                                TextWrapping="NoWrap"
+                                VerticalScrollBarVisibility="Auto" />
                         </ui:Card>
-                        <ui:Card VerticalAlignment="Top">
+                        <ui:Card
+                            Grid.Column="1"
+                            Margin="4,0,0,0"
+                            VerticalAlignment="Top">
                             <md:MarkdownViewer Markdown="{Binding Markdown}" />
                         </ui:Card>
-                    </ui:StackPanel>
+                    </Grid>
                 </StackPanel>
             </ScrollViewer>
         </ui:Grid>
