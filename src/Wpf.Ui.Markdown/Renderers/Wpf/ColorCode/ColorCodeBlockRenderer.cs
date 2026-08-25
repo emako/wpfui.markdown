@@ -2,6 +2,7 @@
 using ColorCode.Styling;
 using Markdig.Parsers;
 using Markdig.Syntax;
+using System;
 using System.Text;
 using System.Windows;
 using System.Windows.Documents;
@@ -49,21 +50,45 @@ public class ColorCodeBlockRenderer : WpfObjectRenderer<CodeBlock>
             return;
         }
 
+        // Incomplete fenced blocks are common during streaming; skip syntax highlighting to avoid hangs.
+        if (fencedCodeBlock.IsOpen)
+        {
+            _underlyingCodeBlockRenderer.Write(renderer, codeBlock);
+
+            return;
+        }
+
         var code = ExtractCode(codeBlock);
         var formatter = new RichTextBoxFormatter(_styleDictionary);
         var paragraph = new Paragraph();
         paragraph.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.CodeBlockStyleKey);
-        formatter.FormatInlines(code, language, paragraph.Inlines);
 
-        //renderer.WriteBlock(paragraph);
-        renderer.WriteBlock(paragraph.ToRounded(4));
+        try
+        {
+            formatter.FormatInlines(code, language, paragraph.Inlines);
+            renderer.WriteBlock(paragraph.ToRounded(4));
+        }
+        catch (Exception)
+        {
+            _underlyingCodeBlockRenderer.Write(renderer, codeBlock);
+        }
     }
 
     private static ILanguage? ExtractLanguage(IFencedBlock fencedCodeBlock, FencedCodeBlockParser parser)
     {
-        var languageId = fencedCodeBlock.Info!.Replace(parser.InfoPrefix!, string.Empty);
+        var languageId = fencedCodeBlock.Info!.Replace(parser.InfoPrefix!, string.Empty).Trim();
 
-        return string.IsNullOrWhiteSpace(languageId) ? null : Languages.FindById(languageId);
+        if (string.IsNullOrWhiteSpace(languageId))
+        {
+            return null;
+        }
+
+        if (string.Equals(languageId, "json", StringComparison.OrdinalIgnoreCase))
+        {
+            return SafeJsonLanguage.Instance;
+        }
+
+        return Languages.FindById(languageId);
     }
 
     private static string ExtractCode(LeafBlock leafBlock)

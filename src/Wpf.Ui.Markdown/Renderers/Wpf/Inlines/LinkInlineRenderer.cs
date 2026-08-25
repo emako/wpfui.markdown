@@ -5,6 +5,7 @@ using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media.Imaging;
+using Wpf.Ui.Markdown.Renderers;
 
 namespace Wpf.Ui.Markdown.Renderers.Wpf.Inlines;
 
@@ -14,6 +15,13 @@ namespace Wpf.Ui.Markdown.Renderers.Wpf.Inlines;
 /// <seealso cref="Markdig.Renderers.Wpf.WpfObjectRenderer{Markdig.Syntax.Inlines.LinkInline}" />
 public class LinkInlineRenderer : WpfObjectRenderer<LinkInline>
 {
+    private readonly WpfRenderer? _wpfRenderer;
+
+    public LinkInlineRenderer(WpfRenderer? wpfRenderer = null)
+    {
+        _wpfRenderer = wpfRenderer;
+    }
+
     /// <inheritdoc/>
     protected override void Write(WpfRenderer renderer, LinkInline link)
     {
@@ -48,19 +56,32 @@ public class LinkInlineRenderer : WpfObjectRenderer<LinkInline>
         {
             var hyperlink = new Hyperlink
             {
-                Command = Commands.Hyperlink,
-                CommandParameter = url,
                 NavigateUri = new Uri(url, UriKind.RelativeOrAbsolute),
                 ToolTip = !string.IsNullOrEmpty(link.Title) ? link.Title : null,
             };
 
-            hyperlink.CommandBindings.Add(new CommandBinding(Commands.Hyperlink, Commands.OpenUrlCommandExecutedHandler));
+            ApplyHyperlinkStyle(hyperlink);
 
-            hyperlink.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.HyperlinkStyleKey);
+            if (_wpfRenderer?.HyperlinkInteractive ?? true)
+            {
+                hyperlink.Command = Commands.Hyperlink;
+                hyperlink.CommandParameter = url;
+                hyperlink.CommandBindings.Add(new CommandBinding(Commands.Hyperlink, Commands.OpenUrlCommandExecutedHandler));
+            }
 
             renderer.Push(hyperlink);
             renderer.WriteChildren(link);
             renderer.Pop();
         }
+    }
+
+    private void ApplyHyperlinkStyle(Hyperlink hyperlink)
+    {
+        if (_wpfRenderer?.HyperlinkBrush != null)
+        {
+            hyperlink.Foreground = _wpfRenderer.HyperlinkBrush;
+        }
+
+        hyperlink.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.HyperlinkStyleKey);
     }
 }

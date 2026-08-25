@@ -3,6 +3,7 @@ using System;
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Input;
+using Wpf.Ui.Markdown.Renderers;
 
 namespace Wpf.Ui.Markdown.Renderers.Wpf.Inlines;
 
@@ -12,6 +13,13 @@ namespace Wpf.Ui.Markdown.Renderers.Wpf.Inlines;
 /// <seealso cref="Markdig.Renderers.Wpf.WpfObjectRenderer{Markdig.Syntax.Inlines.AutolinkInline}" />
 public class AutolinkInlineRenderer : WpfObjectRenderer<AutolinkInline>
 {
+    private readonly WpfRenderer? _wpfRenderer;
+
+    public AutolinkInlineRenderer(WpfRenderer? wpfRenderer = null)
+    {
+        _wpfRenderer = wpfRenderer;
+    }
+
     /// <inheritdoc/>
     protected override void Write(WpfRenderer renderer, AutolinkInline link)
     {
@@ -31,15 +39,23 @@ public class AutolinkInlineRenderer : WpfObjectRenderer<AutolinkInline>
 
         var hyperlink = new Hyperlink
         {
-            Command = Commands.Hyperlink,
-            CommandParameter = url,
             NavigateUri = new Uri(url, UriKind.RelativeOrAbsolute),
             ToolTip = link.Url,
         };
 
-        hyperlink.CommandBindings.Add(new CommandBinding(Commands.Hyperlink, Commands.OpenUrlCommandExecutedHandler));
+        if (_wpfRenderer?.HyperlinkBrush != null)
+        {
+            hyperlink.Foreground = _wpfRenderer.HyperlinkBrush;
+        }
 
         hyperlink.SetResourceReference(FrameworkContentElement.StyleProperty, Styles.HyperlinkStyleKey);
+
+        if (_wpfRenderer?.HyperlinkInteractive ?? true)
+        {
+            hyperlink.Command = Commands.Hyperlink;
+            hyperlink.CommandParameter = url;
+            hyperlink.CommandBindings.Add(new CommandBinding(Commands.Hyperlink, Commands.OpenUrlCommandExecutedHandler));
+        }
 
         renderer.Push(hyperlink);
         renderer.WriteText(link.Url);

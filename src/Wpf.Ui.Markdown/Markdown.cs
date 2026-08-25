@@ -41,6 +41,34 @@ public static partial class Markdown
     }
 
     /// <summary>
+    /// Attempts to convert a Markdown string to a <see cref="FlowDocument"/>.
+    /// </summary>
+    /// <param name="markdown">A Markdown text.</param>
+    /// <param name="document">The converted document when successful.</param>
+    /// <param name="pipeline">The pipeline used for the conversion.</param>
+    /// <param name="renderer">Optional renderer instance.</param>
+    /// <returns><c>true</c> if conversion succeeded; otherwise <c>false</c>.</returns>
+    public static bool TryToFlowDocument(string markdown, out FlowDocument document, MarkdownPipeline? pipeline = null, WpfRenderer? renderer = null)
+    {
+        if (markdown == null)
+        {
+            document = new FlowDocument();
+            return false;
+        }
+
+        try
+        {
+            document = ToFlowDocument(markdown, pipeline, renderer);
+            return true;
+        }
+        catch (Exception)
+        {
+            document = new FlowDocument();
+            return false;
+        }
+    }
+
+    /// <summary>
     /// Converts a Markdown string to XAML.
     /// </summary>
     /// <param name="markdown">A Markdown text.</param>
