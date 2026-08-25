@@ -68,8 +68,13 @@ public class ColorCodeBlockRenderer : WpfObjectRenderer<CodeBlock>
 
     private static string ExtractCode(LeafBlock leafBlock)
     {
-        var code = new StringBuilder();
         var lines = leafBlock.Lines.Lines;
+        if (lines == null)
+        {
+            return string.Empty;
+        }
+
+        var code = new StringBuilder();
         var totalLines = lines.Length;
 
         for (var index = 0; index < totalLines; index++)
