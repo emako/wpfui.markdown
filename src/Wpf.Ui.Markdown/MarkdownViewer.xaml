@@ -166,6 +166,7 @@
     <Style x:Key="{x:Static md:Styles.CodeStyleKey}" TargetType="{x:Type Run}">
         <Setter Property="Foreground" Value="{DynamicResource MarkdownRunBrush}" />
         <Setter Property="FontFamily" Value="{DynamicResource MonoThemeFontFamily}" />
+        <Setter Property="Background" Value="{DynamicResource MarkdownInlineCodeBackground}" />
     </Style>
 
     <Style x:Key="{x:Static md:Styles.Heading1StyleKey}" TargetType="{x:Type Paragraph}">

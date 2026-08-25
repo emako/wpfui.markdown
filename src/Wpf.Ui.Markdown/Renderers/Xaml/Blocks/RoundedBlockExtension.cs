@@ -38,30 +38,4 @@ public static class RoundedBlockExtension
 
         return new BlockUIContainer(border);
     }
-
-    public static Inline ToRounded(this Inline inline, double cornerRadius)
-    {
-        var border = new Border
-        {
-            BorderThickness = new Thickness(1),
-            CornerRadius = new CornerRadius(cornerRadius),
-            Padding = new Thickness(3d, 1d, 3d, 1d),
-            HorizontalAlignment = HorizontalAlignment.Stretch,
-            VerticalAlignment = VerticalAlignment.Stretch,
-            Margin = new Thickness(0d, 0d, 0d, -4d),
-            Height = 20d,
-            Child = new TextBlock(inline)
-            {
-                Margin = new Thickness(0d, 0d, 0d, -10d),
-                HorizontalAlignment = HorizontalAlignment.Center,
-                VerticalAlignment = VerticalAlignment.Center,
-            }
-        };
-
-        inline.SetResourceReference(TextBlock.ForegroundProperty, "CardForeground");
-        border.SetResourceReference(Border.BackgroundProperty, "CardBackground");
-        border.SetResourceReference(Border.BorderBrushProperty, "CardBorderBrush");
-
-        return new InlineUIContainer(border);
-    }
 }
