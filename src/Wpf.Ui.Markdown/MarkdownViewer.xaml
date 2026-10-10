@@ -241,6 +241,7 @@
         <Setter Property="Background" Value="{DynamicResource CardBackground}" />
         <Setter Property="BorderBrush" Value="{DynamicResource CardBorderBrush}" />
         <Setter Property="BorderThickness" Value="1,1,0,0" />
+        <Setter Property="Padding" Value="8,4,8,4" />
         <Setter Property="FontFamily" Value="{DynamicResource MonoThemeFontFamily}" />
     </Style>
 
