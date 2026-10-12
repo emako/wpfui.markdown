@@ -39,7 +39,7 @@ public partial class MainWindow : FluentWindow
     }
 
     [ObservableProperty]
-    private int themeIndex = (int)ApplicationTheme.Dark;
+    public partial int ThemeIndex { get; set; } = (int)ApplicationTheme.Dark;
 
     partial void OnThemeIndexChanged(int value)
     {
@@ -47,7 +47,7 @@ public partial class MainWindow : FluentWindow
     }
 
     [ObservableProperty]
-    private string markdown = new StreamReader(ResourceHelper.GetStream("pack://application:,,,/Wpf.Ui.Test;component/Resources/Strings/Template.md")).ReadToEnd();
+    public partial string Markdown { get; set; } = new StreamReader(ResourceHelper.GetStream("pack://application:,,,/Wpf.Ui.Test;component/Resources/Strings/Template.md")!).ReadToEnd();
 }
 
 file static class ResourceHelper
