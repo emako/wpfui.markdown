@@ -6,7 +6,6 @@ using System.Threading;
 using System.Windows;
 using System.Windows.Resources;
 using Wpf.Ui.Appearance;
-using Wpf.Ui.Violeta.Appearance;
 using Wpf.Ui.Violeta.Controls;
 
 namespace Wpf.Ui.Test;
@@ -30,7 +29,13 @@ public partial class MainWindow : ShellWindow
 
     partial void OnThemeIndexChanged(int value)
     {
-        ThemeManager.Apply((ApplicationTheme)value);
+        if ((ApplicationTheme)value == ApplicationTheme.Unknown)
+        {
+            ApplicationThemeManager.ApplySystemTheme();
+            return;
+        }
+
+        ApplicationThemeManager.Apply((ApplicationTheme)value);
     }
 
     [ObservableProperty]

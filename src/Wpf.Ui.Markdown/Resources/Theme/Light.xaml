@@ -8,6 +8,7 @@
     <SolidColorBrush x:Key="MarkdownQuoteBlockForeground" Color="#777777" />
     <SolidColorBrush x:Key="MarkdownThematicBreakStroke" Color="#E7E7E7" />
     <SolidColorBrush x:Key="MarkdownMarkedBackground" Color="#FFFF00" />
-    <SolidColorBrush x:Key="MarkdownInlineCodeBackground" Color="#E8EAED" />
+    <SolidColorBrush x:Key="MarkdownInlineCodeForeground" Color="#000000" />
+    <SolidColorBrush x:Key="MarkdownInlineCodeBackground" Color="#F3F4F4" />
 
 </ResourceDictionary>
