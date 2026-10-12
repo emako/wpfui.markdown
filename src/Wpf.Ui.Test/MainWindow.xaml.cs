@@ -4,17 +4,15 @@ using System.IO;
 using System.IO.Packaging;
 using System.Threading;
 using System.Windows;
-using System.Windows.Media;
 using System.Windows.Resources;
 using Wpf.Ui.Appearance;
-using Wpf.Ui.Controls;
 using Wpf.Ui.Violeta.Appearance;
 using Wpf.Ui.Violeta.Controls;
 
 namespace Wpf.Ui.Test;
 
 [ObservableObject]
-public partial class MainWindow : FluentWindow
+public partial class MainWindow : ShellWindow
 {
     public MainWindow()
     {
@@ -25,17 +23,6 @@ public partial class MainWindow : FluentWindow
         Splash.CloseOnLoaded(this, minimumMilliseconds: 1800);
 
         ScrollViewer.ScrollToEnd();
-    }
-
-    protected override void OnSourceInitialized(EventArgs e)
-    {
-        base.OnSourceInitialized(e);
-
-        if (WindowBackdrop.IsSupported(WindowBackdropType.Mica))
-        {
-            Background = new SolidColorBrush(Colors.Transparent);
-            WindowBackdrop.ApplyBackdrop(this, WindowBackdropType.Mica);
-        }
     }
 
     [ObservableProperty]
