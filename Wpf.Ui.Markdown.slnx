@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="src/Wpf.Ui.Markdown/Wpf.Ui.Markdown.csproj" />
+  <Project Path="src/Wpf.Ui.Test/Wpf.Ui.Test.csproj" />
+</Solution>
