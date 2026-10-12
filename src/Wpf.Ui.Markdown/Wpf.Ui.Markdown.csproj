@@ -9,8 +9,12 @@
         <UseWindowsForms>false</UseWindowsForms>
         <LangVersion>latest</LangVersion>
         <Nullable>enable</Nullable>
+        <DebugType>portable</DebugType>
+        <DebugSymbols>true</DebugSymbols>
+        <IncludeSymbols>true</IncludeSymbols>
         <EnableWindowsTargeting>true</EnableWindowsTargeting>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
         <AssemblyVersion>4.3.0.0</AssemblyVersion>
         <FileVersion>4.3.0.0</FileVersion>
         <Version>$(VersionPrefix)4.3.0.0</Version>
