@@ -22,7 +22,11 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <vio:TitleBar Title="Wpf.Ui.Test" Grid.Row="0">
+        <vio:TitleBar
+            Title="Wpf.Ui.Test"
+            Grid.Row="0"
+            BackButtonVisibility="Collapsed"
+            PaneToggleButtonVisibility="Collapsed">
             <vio:TitleBar.CustomFooter>
                 <StackPanel
                     Margin="0,0,8,0"
